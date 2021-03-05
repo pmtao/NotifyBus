@@ -8,20 +8,20 @@
 import Foundation
 
 /// only notify with name
-protocol BasicNotifyObject {
+public protocol BasicNotifyObject {
   var name: Notification.Name { get }
   var notifyCenter: NotificationCenter { get }
 }
 
 /// notify with name and structured infomation
-protocol InfomedNotifyObject: BasicNotifyObject {
+public protocol InfomedNotifyObject: BasicNotifyObject {
   var userInfoKey: String { get }
   var userInfo: [String: Any] { get }
   func getObject(notification: Notification) -> Self
 }
 
 extension BasicNotifyObject {
-  func post() {
+  public func post() {
     notifyCenter.post(name: self.name,
                       object: nil,
                       userInfo: nil)
@@ -29,7 +29,7 @@ extension BasicNotifyObject {
 }
 
 extension InfomedNotifyObject {
-  func post() {
+  public func post() {
     notifyCenter.post(name: self.name,
                       object: nil,
                       userInfo: self.userInfo)

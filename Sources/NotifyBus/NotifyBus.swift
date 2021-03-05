@@ -27,9 +27,13 @@ class NotifyHandler {
 }
 
 /// send notification to obsevers
-class NotifyBus {
+public class NotifyBus {
   var notifyCenters: [NotificationCenter: [NSObjectProtocol]] = [:]
   var delayedHandlers = [Notification.Name: NotifyHandler]()
+  
+  public init() {
+    
+  }
   
   deinit {
     for (center, tokens) in notifyCenters {
@@ -39,7 +43,7 @@ class NotifyBus {
     }
   }
   
-  func observe<T: BasicNotifyObject>(_ notifyObject: T,
+  public func observe<T: BasicNotifyObject>(_ notifyObject: T,
                                      queue: OperationQueue? = nil,
                                      runAtOnce: Bool = true,
                                      handler: @escaping (T) -> Void) {
@@ -62,7 +66,7 @@ class NotifyBus {
     self.addToken(in: notifyObject.notifyCenter, token: token)
   }
   
-  func observe<T: InfomedNotifyObject>(_ notifyObject: T,
+  public func observe<T: InfomedNotifyObject>(_ notifyObject: T,
                                        queue: OperationQueue? = nil,
                                        runAtOnce: Bool = true,
                                        handler: @escaping (T) -> Void) {
@@ -103,7 +107,7 @@ class NotifyBus {
     }
   }
   
-  func executeHandler(of name: Notification.Name) {
+  public func executeHandler(of name: Notification.Name) {
     if let delayedHandlers = delayedHandlers[name] {
       delayedHandlers.execute()
     }
