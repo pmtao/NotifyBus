@@ -30,11 +30,11 @@ final class NotifyBusTests: XCTestCase {
   func testExample() {
     expectation = self.expectation(description: "UserNotification test")
     let notifyBus = NotifyBus()
-    
     notifyBus.observe(UserNotification.infoChanged, runAtOnce: false, handler: userInfoChangedNotify)
+    
     UserNotification.infoChanged.post()
     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-      notifyBus.executeHandler(of: UserNotification.infoChanged.name)
+      notifyBus.execute(UserNotification.infoChanged.name)
     }
     
     self.wait(for: [expectation!], timeout: 2)

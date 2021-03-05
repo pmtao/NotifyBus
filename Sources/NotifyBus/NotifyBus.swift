@@ -107,7 +107,7 @@ public class NotifyBus {
     }
   }
   
-  public func executeHandler(of name: Notification.Name) {
+  public func execute(_ name: Notification.Name) {
     if let delayedHandlers = delayedHandlers[name] {
       delayedHandlers.execute()
     }
