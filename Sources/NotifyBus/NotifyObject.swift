@@ -16,7 +16,7 @@ public protocol BasicNotifyObject {
 /// notify with name and structured infomation
 public protocol InfomedNotifyObject: BasicNotifyObject {
   var userInfoKey: String { get }
-  var userInfo: [String: Any] { get }
+  var userInfo: [String: Any]? { get }
   func getObject(notification: Notification) -> Self
 }
 
