@@ -2,7 +2,14 @@
 
 Provide light weight notification bus on top of NotificationCenter, with typed message, don't need to mess with userInfo.
 
-Usage
+## Install
+
+- SPM: `https://github.com/pmtao/NotifyBus`
+- import
+
+```swift
+import NotifyBus
+```
 
 ## Simple notification
 
